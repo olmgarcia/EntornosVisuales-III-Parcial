@@ -116,8 +116,8 @@ Public Class conexion
     Public Function convertirMayusculas(ByVal Texto As String)
         Return StrConv(Texto, VbStrConv.ProperCase)
     End Function
+
     Public Function convertirMinusculas(ByVal Texto As String)
         Return StrConv(Texto, VbStrConv.Lowercase)
     End Function
-
 End Class

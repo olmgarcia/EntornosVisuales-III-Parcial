@@ -23,6 +23,9 @@ Partial Class Usuario
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TxtBuscar = New System.Windows.Forms.TextBox()
+        Me.DTGUsuario = New System.Windows.Forms.DataGridView()
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnModificar = New System.Windows.Forms.Button()
         Me.BtnSalir = New System.Windows.Forms.Button()
@@ -43,9 +46,6 @@ Partial Class Usuario
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtCodigo = New System.Windows.Forms.TextBox()
-        Me.DTGUsuario = New System.Windows.Forms.DataGridView()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.TxtBuscar = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DTGUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -83,106 +83,142 @@ Partial Class Usuario
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Usuario"
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(414, 364)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(136, 17)
+        Me.Label8.TabIndex = 19
+        Me.Label8.Text = "Nombre de Usuario"
+        '
+        'TxtBuscar
+        '
+        Me.TxtBuscar.Location = New System.Drawing.Point(581, 356)
+        Me.TxtBuscar.Name = "TxtBuscar"
+        Me.TxtBuscar.Size = New System.Drawing.Size(158, 25)
+        Me.TxtBuscar.TabIndex = 18
+        '
+        'DTGUsuario
+        '
+        Me.DTGUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DTGUsuario.Location = New System.Drawing.Point(375, 36)
+        Me.DTGUsuario.Name = "DTGUsuario"
+        Me.DTGUsuario.Size = New System.Drawing.Size(594, 273)
+        Me.DTGUsuario.TabIndex = 17
+        '
         'BtnBuscar
         '
+        Me.BtnBuscar.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnBuscar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnBuscar.Location = New System.Drawing.Point(762, 338)
+        Me.BtnBuscar.Location = New System.Drawing.Point(760, 356)
         Me.BtnBuscar.Name = "BtnBuscar"
         Me.BtnBuscar.Size = New System.Drawing.Size(85, 33)
         Me.BtnBuscar.TabIndex = 16
         Me.BtnBuscar.Text = "Buscar"
-        Me.BtnBuscar.UseVisualStyleBackColor = True
+        Me.BtnBuscar.UseVisualStyleBackColor = False
         '
         'BtnModificar
         '
+        Me.BtnModificar.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnModificar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnModificar.Location = New System.Drawing.Point(306, 135)
+        Me.BtnModificar.Location = New System.Drawing.Point(284, 135)
         Me.BtnModificar.Name = "BtnModificar"
         Me.BtnModificar.Size = New System.Drawing.Size(85, 33)
         Me.BtnModificar.TabIndex = 15
         Me.BtnModificar.Text = "Modificar"
-        Me.BtnModificar.UseVisualStyleBackColor = True
+        Me.BtnModificar.UseVisualStyleBackColor = False
         '
         'BtnSalir
         '
+        Me.BtnSalir.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnSalir.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Location = New System.Drawing.Point(884, 338)
+        Me.BtnSalir.Location = New System.Drawing.Point(884, 356)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(85, 33)
         Me.BtnSalir.TabIndex = 3
         Me.BtnSalir.Text = "Salir"
-        Me.BtnSalir.UseVisualStyleBackColor = True
+        Me.BtnSalir.UseVisualStyleBackColor = False
         '
         'BtnEliminar
         '
+        Me.BtnEliminar.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnEliminar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEliminar.Location = New System.Drawing.Point(306, 85)
+        Me.BtnEliminar.Location = New System.Drawing.Point(284, 85)
         Me.BtnEliminar.Name = "BtnEliminar"
         Me.BtnEliminar.Size = New System.Drawing.Size(85, 33)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
-        Me.BtnEliminar.UseVisualStyleBackColor = True
+        Me.BtnEliminar.UseVisualStyleBackColor = False
         '
         'BtnLimpiar
         '
+        Me.BtnLimpiar.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnLimpiar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnLimpiar.Location = New System.Drawing.Point(306, 187)
+        Me.BtnLimpiar.Location = New System.Drawing.Point(284, 187)
         Me.BtnLimpiar.Name = "BtnLimpiar"
         Me.BtnLimpiar.Size = New System.Drawing.Size(85, 33)
         Me.BtnLimpiar.TabIndex = 2
         Me.BtnLimpiar.Text = "Limpiar"
-        Me.BtnLimpiar.UseVisualStyleBackColor = True
+        Me.BtnLimpiar.UseVisualStyleBackColor = False
         '
         'CmbRol
         '
         Me.CmbRol.FormattingEnabled = True
         Me.CmbRol.Items.AddRange(New Object() {"Admin", "Cajero"})
-        Me.CmbRol.Location = New System.Drawing.Point(117, 250)
+        Me.CmbRol.Location = New System.Drawing.Point(95, 250)
         Me.CmbRol.Name = "CmbRol"
         Me.CmbRol.Size = New System.Drawing.Size(171, 25)
         Me.CmbRol.TabIndex = 14
         '
         'TxtCorreo
         '
-        Me.TxtCorreo.Location = New System.Drawing.Point(117, 299)
+        Me.TxtCorreo.Location = New System.Drawing.Point(95, 299)
         Me.TxtCorreo.Name = "TxtCorreo"
         Me.TxtCorreo.Size = New System.Drawing.Size(172, 25)
         Me.TxtCorreo.TabIndex = 13
         '
         'TxtContraseña
         '
-        Me.TxtContraseña.Location = New System.Drawing.Point(117, 210)
+        Me.TxtContraseña.Location = New System.Drawing.Point(95, 210)
         Me.TxtContraseña.Name = "TxtContraseña"
         Me.TxtContraseña.Size = New System.Drawing.Size(172, 25)
         Me.TxtContraseña.TabIndex = 11
         '
         'BtnGuardar
         '
+        Me.BtnGuardar.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnGuardar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGuardar.Location = New System.Drawing.Point(306, 36)
+        Me.BtnGuardar.Location = New System.Drawing.Point(284, 36)
         Me.BtnGuardar.Name = "BtnGuardar"
         Me.BtnGuardar.Size = New System.Drawing.Size(85, 33)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
-        Me.BtnGuardar.UseVisualStyleBackColor = True
+        Me.BtnGuardar.UseVisualStyleBackColor = False
         '
         'TxtUsuario
         '
-        Me.TxtUsuario.Location = New System.Drawing.Point(117, 166)
+        Me.TxtUsuario.Location = New System.Drawing.Point(95, 166)
         Me.TxtUsuario.Name = "TxtUsuario"
         Me.TxtUsuario.Size = New System.Drawing.Size(172, 25)
         Me.TxtUsuario.TabIndex = 10
         '
         'TxtApellido
         '
-        Me.TxtApellido.Location = New System.Drawing.Point(117, 122)
+        Me.TxtApellido.Location = New System.Drawing.Point(95, 122)
         Me.TxtApellido.Name = "TxtApellido"
         Me.TxtApellido.Size = New System.Drawing.Size(172, 25)
         Me.TxtApellido.TabIndex = 9
         '
         'TxtNombre
         '
-        Me.TxtNombre.Location = New System.Drawing.Point(117, 80)
+        Me.TxtNombre.Location = New System.Drawing.Point(95, 80)
         Me.TxtNombre.Name = "TxtNombre"
         Me.TxtNombre.Size = New System.Drawing.Size(172, 25)
         Me.TxtNombre.TabIndex = 8
@@ -252,34 +288,10 @@ Partial Class Usuario
         '
         'TxtCodigo
         '
-        Me.TxtCodigo.Location = New System.Drawing.Point(117, 36)
+        Me.TxtCodigo.Location = New System.Drawing.Point(95, 36)
         Me.TxtCodigo.Name = "TxtCodigo"
         Me.TxtCodigo.Size = New System.Drawing.Size(172, 25)
         Me.TxtCodigo.TabIndex = 0
-        '
-        'DTGUsuario
-        '
-        Me.DTGUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DTGUsuario.Location = New System.Drawing.Point(411, 36)
-        Me.DTGUsuario.Name = "DTGUsuario"
-        Me.DTGUsuario.Size = New System.Drawing.Size(558, 273)
-        Me.DTGUsuario.TabIndex = 17
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(408, 354)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(136, 17)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "Nombre de Usuario"
-        '
-        'TxtBuscar
-        '
-        Me.TxtBuscar.Location = New System.Drawing.Point(575, 346)
-        Me.TxtBuscar.Name = "TxtBuscar"
-        Me.TxtBuscar.Size = New System.Drawing.Size(158, 25)
-        Me.TxtBuscar.TabIndex = 18
         '
         'Usuario
         '
