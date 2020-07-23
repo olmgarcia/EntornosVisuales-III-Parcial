@@ -1,13 +1,44 @@
 ﻿Imports System.Text.RegularExpressions
+Imports System.Data.SqlClient
 Public Class Usuario
     Dim conexion As New conexion()
 
     Private Sub Usuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conexion.conectar()
+        mostrarDatos()
     End Sub
 
     Private Function validarCorreo(ByVal isCorreo As String) As Boolean
         Return Regex.IsMatch(isCorreo, "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$")
+    End Function
+
+    Private Sub mostrarDatos()
+        Dim cmd As New SqlCommand("Select * from usuario", conexion.conexion)
+        Dim da As New SqlDataAdapter(cmd)
+        Dim dt As New DataTable
+        Try
+            conexion.conexion.Open()
+            cmd.CommandType = CommandType.Text
+            da.Fill(dt)
+            If dt.Rows.Count <> 0 Then
+                DTGUsuario.DataSource = dt
+                conexion.conexion.Close()
+            Else
+                DTGUsuario.DataSource = Nothing
+                conexion.conexion.Close()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Function validarTextBox() As Integer
+        If (TxtUsuario.Text <> String.Empty And TxtNombre.Text <> String.Empty And TxtApellido.Text <> String.Empty And TxtCorreo.Text <> String.Empty And TxtCodigo.Text <> String.Empty And TxtContraseña.Text <> String.Empty And IsNumeric(TxtCodigo.Text)) Then
+            Return 1
+        Else
+            Return 0
+        End If
+
     End Function
 
     Private Sub limpiar()
@@ -33,6 +64,7 @@ Public Class Usuario
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
+
         If validarCorreo(LCase(TxtCorreo.Text)) = False Then
             MessageBox.Show("Correo invalido, *username@midominio.com*", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtCorreo.Focus()
@@ -40,6 +72,7 @@ Public Class Usuario
         Else
             insertarUsuaurio()
             MessageBox.Show("Correo valido", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            mostrarDatos()
         End If
     End Sub
 
@@ -75,10 +108,10 @@ Public Class Usuario
         Try
             If (conexion.eliminarUsuario(idUsuario, rol)) Then
                 MsgBox("Dado de baja")
-                'conexion.conexion.Close()
+                conexion.conexion.Close()
             Else
                 MsgBox("Error al dar de baja usuario")
-                'conexion.conexion.Close()
+                conexion.conexion.Close()
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -97,16 +130,13 @@ Public Class Usuario
         apellido = TxtApellido.Text
         userName = TxtUsuario.Text
         psw = TxtContraseña.Text
-        rol = CmbRol.Text
         correo = TxtCorreo.Text
-
+        rol = CmbRol.Text
         Try
             If conexion.modificarUsuario(idUsuario, nombre, apellido, userName, psw, rol, correo) Then
-                MessageBox.Show("Modificado", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                conexion.conexion.Close()
+                MessageBox.Show("Cliente Actualizado", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                MessageBox.Show("Error al modificar", "Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                conexion.conexion.Close()
+                MessageBox.Show("Error al actualizar cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -114,21 +144,46 @@ Public Class Usuario
     End Sub
 
     Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
-        modificarUsuario()
+        If validarCorreo(LCase(TxtCorreo.Text)) = False And validarTextBox() = 0 Then
+            MessageBox.Show("Error al modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf validarCorreo(LCase(TxtCorreo.Text)) = True And validarTextBox() = 1 Then
+            modificarUsuario()
+            mostrarDatos()
+        End If
     End Sub
 
     Private Sub buscarUsuario()
-        Dim idUsuario As Integer
-        Dim userName As String
-        idUsuario = TxtCodigo.Text
-        userName = TxtUsuario.Text
 
+        Dim userName As String
+        userName = TxtBuscar.Text
         Try
-            If conexion.buscarUsuario(idUsuario, userName) Then
-                MessageBox.Show("Se encontro", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If (conexion.buscarUsuario(userName)) Then
+                MsgBox("Encontrado")
+                mostrarBusqueda()
+                'conexion.conexion.Close()
+            Else
+                MsgBox("Error al buscar")
+                'conexion.conexion.Close()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+    Private Sub mostrarBusqueda()
+        Dim cmd As New SqlCommand("buscarUsuario", conexion.conexion)
+        Dim da As New SqlDataAdapter(cmd)
+        Dim dt As New DataTable
+        Try
+            conexion.conexion.Open()
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@userName", TxtBuscar.Text)
+            da.Fill(dt)
+            If dt.Rows.Count <> 0 Then
+                DTGUsuario.DataSource = dt
                 conexion.conexion.Close()
             Else
-                MessageBox.Show("Error al Buscar", "Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                DTGUsuario.DataSource = Nothing
                 conexion.conexion.Close()
             End If
         Catch ex As Exception

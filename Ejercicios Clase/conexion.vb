@@ -19,19 +19,21 @@ Public Class conexion
         End Try
     End Sub
 
-    Public Function insertarUsuario(idUsuario As Integer, nombre As String, apellido As String, userName As String, psw As String, rol As String, estado As String, correo As String)
+    Public Function insertarUsuario(idUsuario As Integer, nombre As String, apellido As String, userName As String,
+                                    psw As String, rol As String, estado As String, correo As String)
+        Dim enc As New encriptador
         Try
             conexion.Open()
             cmb = New SqlCommand("insertarUsuario", conexion)
             cmb.CommandType = CommandType.StoredProcedure
             cmb.Parameters.AddWithValue("@idUsuario", idUsuario)
-            cmb.Parameters.AddWithValue("@nombre", nombre)
-            cmb.Parameters.AddWithValue("@apellido", apellido)
+            cmb.Parameters.AddWithValue("@nombre", convertirMayusculas(nombre))
+            cmb.Parameters.AddWithValue("@apellido", convertirMayusculas(apellido))
             cmb.Parameters.AddWithValue("@userName", userName)
-            cmb.Parameters.AddWithValue("@psw", psw)
+            cmb.Parameters.AddWithValue("@psw", enc.Encriptar(psw))
             cmb.Parameters.AddWithValue("@rol", rol)
             cmb.Parameters.AddWithValue("@estado", estado)
-            cmb.Parameters.AddWithValue("@correo", correo)
+            cmb.Parameters.AddWithValue("@correo", convertirMinusculas(correo))
             If cmb.ExecuteNonQuery Then
                 Return True
             Else
@@ -39,6 +41,9 @@ Public Class conexion
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            Return False
+        Finally
+            conexion.Close()
         End Try
     End Function
 
@@ -62,46 +67,57 @@ Public Class conexion
         End Try
     End Function
 
-    Public Function modificarUsuario(idUsuario As Integer, nombre As String, apellido As String, userName As String, psw As String, rol As String, correo As String)
+    Public Function modificarUsuario(idUsuario As Integer, nombre As String, apellido As String, userName As String,
+                                     psw As String, rol As String, correo As String)
+        Dim enc As New encriptador
         Try
             conexion.Open()
             cmb = New SqlCommand("modificarUsuario", conexion)
             cmb.CommandType = CommandType.StoredProcedure
             cmb.Parameters.AddWithValue("@idUsuario", idUsuario)
-            cmb.Parameters.AddWithValue("@nombre", nombre)
-            cmb.Parameters.AddWithValue("@apellido", apellido)
+            cmb.Parameters.AddWithValue("@nombre", convertirMayusculas(nombre))
+            cmb.Parameters.AddWithValue("@apellido", convertirMayusculas(apellido))
             cmb.Parameters.AddWithValue("@userName", userName)
-            cmb.Parameters.AddWithValue("@psw", psw)
+            cmb.Parameters.AddWithValue("@psw", enc.Encriptar(psw))
             cmb.Parameters.AddWithValue("@rol", rol)
-            cmb.Parameters.AddWithValue("@correo", correo)
-            If cmb.ExecuteNonQuery Then
+            cmb.Parameters.AddWithValue("@correo", convertirMinusculas(correo))
+            If cmb.ExecuteNonQuery <> 0 Then
                 Return True
-                conexion.Close()
             Else
                 Return False
-                conexion.Close()
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            Return False
+        Finally
+            conexion.Close()
         End Try
     End Function
 
-    Public Function buscarUsuario(idUsuario As Integer, userName As String)
+    Public Function buscarUsuario(username As String)
         Try
             conexion.Open()
-            cmb = New SqlCommand("modificarUsuario", conexion)
+            cmb = New SqlCommand("buscarUsuario", conexion)
             cmb.CommandType = CommandType.StoredProcedure
-            cmb.Parameters.AddWithValue("@idUsuario", idUsuario)
-            cmb.Parameters.AddWithValue("@userName", userName)
-            If cmb.ExecuteNonQuery Then
+            cmb.Parameters.AddWithValue("@userName", username)
+            If cmb.ExecuteNonQuery <> 0 Then
                 Return True
             Else
                 Return False
             End If
         Catch ex As Exception
+            Return False
             MsgBox(ex.Message)
+        Finally
+            conexion.Close()
         End Try
     End Function
 
+    Public Function convertirMayusculas(ByVal Texto As String)
+        Return StrConv(Texto, VbStrConv.ProperCase)
+    End Function
+    Public Function convertirMinusculas(ByVal Texto As String)
+        Return StrConv(Texto, VbStrConv.Lowercase)
+    End Function
 
 End Class

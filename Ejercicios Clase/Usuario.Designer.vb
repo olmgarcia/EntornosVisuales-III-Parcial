@@ -43,11 +43,18 @@ Partial Class Usuario
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtCodigo = New System.Windows.Forms.TextBox()
+        Me.DTGUsuario = New System.Windows.Forms.DataGridView()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TxtBuscar = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DTGUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Controls.Add(Me.TxtBuscar)
+        Me.GroupBox1.Controls.Add(Me.DTGUsuario)
         Me.GroupBox1.Controls.Add(Me.BtnBuscar)
         Me.GroupBox1.Controls.Add(Me.BtnModificar)
         Me.GroupBox1.Controls.Add(Me.BtnSalir)
@@ -69,9 +76,9 @@ Partial Class Usuario
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.TxtCodigo)
         Me.GroupBox1.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(32, 32)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 35)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(490, 355)
+        Me.GroupBox1.Size = New System.Drawing.Size(975, 397)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Usuario"
@@ -79,7 +86,7 @@ Partial Class Usuario
         'BtnBuscar
         '
         Me.BtnBuscar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnBuscar.Location = New System.Drawing.Point(364, 180)
+        Me.BtnBuscar.Location = New System.Drawing.Point(762, 338)
         Me.BtnBuscar.Name = "BtnBuscar"
         Me.BtnBuscar.Size = New System.Drawing.Size(85, 33)
         Me.BtnBuscar.TabIndex = 16
@@ -89,7 +96,7 @@ Partial Class Usuario
         'BtnModificar
         '
         Me.BtnModificar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnModificar.Location = New System.Drawing.Point(364, 136)
+        Me.BtnModificar.Location = New System.Drawing.Point(306, 135)
         Me.BtnModificar.Name = "BtnModificar"
         Me.BtnModificar.Size = New System.Drawing.Size(85, 33)
         Me.BtnModificar.TabIndex = 15
@@ -99,7 +106,7 @@ Partial Class Usuario
         'BtnSalir
         '
         Me.BtnSalir.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Location = New System.Drawing.Point(364, 276)
+        Me.BtnSalir.Location = New System.Drawing.Point(884, 338)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(85, 33)
         Me.BtnSalir.TabIndex = 3
@@ -109,7 +116,7 @@ Partial Class Usuario
         'BtnEliminar
         '
         Me.BtnEliminar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEliminar.Location = New System.Drawing.Point(364, 86)
+        Me.BtnEliminar.Location = New System.Drawing.Point(306, 85)
         Me.BtnEliminar.Name = "BtnEliminar"
         Me.BtnEliminar.Size = New System.Drawing.Size(85, 33)
         Me.BtnEliminar.TabIndex = 4
@@ -119,7 +126,7 @@ Partial Class Usuario
         'BtnLimpiar
         '
         Me.BtnLimpiar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnLimpiar.Location = New System.Drawing.Point(364, 227)
+        Me.BtnLimpiar.Location = New System.Drawing.Point(306, 187)
         Me.BtnLimpiar.Name = "BtnLimpiar"
         Me.BtnLimpiar.Size = New System.Drawing.Size(85, 33)
         Me.BtnLimpiar.TabIndex = 2
@@ -130,21 +137,21 @@ Partial Class Usuario
         '
         Me.CmbRol.FormattingEnabled = True
         Me.CmbRol.Items.AddRange(New Object() {"Admin", "Cajero"})
-        Me.CmbRol.Location = New System.Drawing.Point(146, 250)
+        Me.CmbRol.Location = New System.Drawing.Point(117, 250)
         Me.CmbRol.Name = "CmbRol"
         Me.CmbRol.Size = New System.Drawing.Size(171, 25)
         Me.CmbRol.TabIndex = 14
         '
         'TxtCorreo
         '
-        Me.TxtCorreo.Location = New System.Drawing.Point(146, 299)
+        Me.TxtCorreo.Location = New System.Drawing.Point(117, 299)
         Me.TxtCorreo.Name = "TxtCorreo"
         Me.TxtCorreo.Size = New System.Drawing.Size(172, 25)
         Me.TxtCorreo.TabIndex = 13
         '
         'TxtContraseña
         '
-        Me.TxtContraseña.Location = New System.Drawing.Point(146, 210)
+        Me.TxtContraseña.Location = New System.Drawing.Point(117, 210)
         Me.TxtContraseña.Name = "TxtContraseña"
         Me.TxtContraseña.Size = New System.Drawing.Size(172, 25)
         Me.TxtContraseña.TabIndex = 11
@@ -152,7 +159,7 @@ Partial Class Usuario
         'BtnGuardar
         '
         Me.BtnGuardar.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGuardar.Location = New System.Drawing.Point(364, 37)
+        Me.BtnGuardar.Location = New System.Drawing.Point(306, 36)
         Me.BtnGuardar.Name = "BtnGuardar"
         Me.BtnGuardar.Size = New System.Drawing.Size(85, 33)
         Me.BtnGuardar.TabIndex = 1
@@ -161,21 +168,21 @@ Partial Class Usuario
         '
         'TxtUsuario
         '
-        Me.TxtUsuario.Location = New System.Drawing.Point(146, 166)
+        Me.TxtUsuario.Location = New System.Drawing.Point(117, 166)
         Me.TxtUsuario.Name = "TxtUsuario"
         Me.TxtUsuario.Size = New System.Drawing.Size(172, 25)
         Me.TxtUsuario.TabIndex = 10
         '
         'TxtApellido
         '
-        Me.TxtApellido.Location = New System.Drawing.Point(146, 122)
+        Me.TxtApellido.Location = New System.Drawing.Point(117, 122)
         Me.TxtApellido.Name = "TxtApellido"
         Me.TxtApellido.Size = New System.Drawing.Size(172, 25)
         Me.TxtApellido.TabIndex = 9
         '
         'TxtNombre
         '
-        Me.TxtNombre.Location = New System.Drawing.Point(146, 80)
+        Me.TxtNombre.Location = New System.Drawing.Point(117, 80)
         Me.TxtNombre.Name = "TxtNombre"
         Me.TxtNombre.Size = New System.Drawing.Size(172, 25)
         Me.TxtNombre.TabIndex = 8
@@ -183,7 +190,7 @@ Partial Class Usuario
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(37, 307)
+        Me.Label7.Location = New System.Drawing.Point(8, 307)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(55, 17)
         Me.Label7.TabIndex = 7
@@ -192,7 +199,7 @@ Partial Class Usuario
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(37, 261)
+        Me.Label6.Location = New System.Drawing.Point(8, 261)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(31, 17)
         Me.Label6.TabIndex = 6
@@ -201,7 +208,7 @@ Partial Class Usuario
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(37, 218)
+        Me.Label5.Location = New System.Drawing.Point(8, 218)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(83, 17)
         Me.Label5.TabIndex = 5
@@ -210,7 +217,7 @@ Partial Class Usuario
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(37, 174)
+        Me.Label4.Location = New System.Drawing.Point(8, 174)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(59, 17)
         Me.Label4.TabIndex = 4
@@ -219,7 +226,7 @@ Partial Class Usuario
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(37, 130)
+        Me.Label3.Location = New System.Drawing.Point(8, 130)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(63, 17)
         Me.Label3.TabIndex = 3
@@ -228,7 +235,7 @@ Partial Class Usuario
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(37, 88)
+        Me.Label2.Location = New System.Drawing.Point(8, 88)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(61, 17)
         Me.Label2.TabIndex = 2
@@ -237,7 +244,7 @@ Partial Class Usuario
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(37, 44)
+        Me.Label1.Location = New System.Drawing.Point(8, 44)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(55, 17)
         Me.Label1.TabIndex = 1
@@ -245,16 +252,40 @@ Partial Class Usuario
         '
         'TxtCodigo
         '
-        Me.TxtCodigo.Location = New System.Drawing.Point(146, 36)
+        Me.TxtCodigo.Location = New System.Drawing.Point(117, 36)
         Me.TxtCodigo.Name = "TxtCodigo"
         Me.TxtCodigo.Size = New System.Drawing.Size(172, 25)
         Me.TxtCodigo.TabIndex = 0
+        '
+        'DTGUsuario
+        '
+        Me.DTGUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DTGUsuario.Location = New System.Drawing.Point(411, 36)
+        Me.DTGUsuario.Name = "DTGUsuario"
+        Me.DTGUsuario.Size = New System.Drawing.Size(558, 273)
+        Me.DTGUsuario.TabIndex = 17
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(408, 354)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(136, 17)
+        Me.Label8.TabIndex = 19
+        Me.Label8.Text = "Nombre de Usuario"
+        '
+        'TxtBuscar
+        '
+        Me.TxtBuscar.Location = New System.Drawing.Point(575, 346)
+        Me.TxtBuscar.Name = "TxtBuscar"
+        Me.TxtBuscar.Size = New System.Drawing.Size(158, 25)
+        Me.TxtBuscar.TabIndex = 18
         '
         'Usuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(569, 418)
+        Me.ClientSize = New System.Drawing.Size(999, 499)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Usuario"
@@ -262,6 +293,7 @@ Partial Class Usuario
         Me.Text = "Usuario"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DTGUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -287,4 +319,7 @@ Partial Class Usuario
     Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnModificar As Button
     Friend WithEvents BtnEliminar As Button
+    Friend WithEvents DTGUsuario As DataGridView
+    Friend WithEvents Label8 As Label
+    Friend WithEvents TxtBuscar As TextBox
 End Class
